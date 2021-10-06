@@ -1,0 +1,33 @@
+/* BLANK */
+.word{
+    color:white;
+    text-align: center;
+}
+.form_container{
+    display: flex;
+    justify-content: center;
+}
+input.textbox{
+    width: 50vw;
+    height: 5vh;
+    border: black;
+    border-radius: 1rem;
+    
+}
+a{
+    width: 25vw;
+    height: 5vh;
+    align-self: center;
+}
+input.btn{
+    width: 25vw;
+    height: 5vh;
+    border: black;
+    border-radius: 1rem;
+    
+}
+.test{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
