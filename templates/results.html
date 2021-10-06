@@ -5,7 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static', filename='stylesheet.css') }}">  
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IM+Fell+DW+Pica+SC&display=swap" rel="stylesheet">
     <title>Results</title>
+    
 </head>
 <body style="background-color: mediumseagreen !important;">
     <div class="header">
@@ -14,12 +18,19 @@
        
         <form action="{{ url_for('results') }}" method="post">
             <div class="test">
-                <div class="msg">{{ msg }}</div>
-                <button onclick="server.alert()">Increment</button>
-              <a href= "{{ url_for('results') }}"><input type="submit" class="btn" value="Search Again!"></br></br></a>
+                <input type="submit" onclick= window.location.href='/index' class="btn" value="Search Again!"></br></br>
+                <div class="result-table">
+                {% for key,value in data.items() %}
+                
+                  <a id="links" href={{value}}><p>{{key}}</p></a>
+                
+                {% endfor %}
+                </div>
             </div>
           </form>
+         
 </div>
+
     
 </body>
 </html>

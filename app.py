@@ -1,7 +1,6 @@
-from flask import Flask, render_template, request, redirect, url_for, session
+from flask import Flask, render_template, request, redirect, url_for
 import os
 import requests
-from requests.sessions import Session
 import startup
 import json
 import jyserver.Flask as jsf
@@ -32,9 +31,6 @@ mysql = MySQL(app)
 class App():
     def __init__(self):
         pass
-    def alert(self):
-        self.js.alert('The Code Run Successfully')
-
 
 
 
@@ -49,8 +45,6 @@ def index():
         username = username_link.split('/')[-1].split('?')[0]
         return redirect(response)
 
-
-    
     return App.render(render_template('index.html'))
 
 @app.route('/callback', methods=['GET'])
@@ -72,21 +66,25 @@ def results():
     url = 'https://api.spotify.com/v1/users/{}/playlists'.format(username)
     r = requests.get(url, headers=access_token[1])
     data = json.loads(r.content)
-    print(username)
     i = 0
-    
+    sozluk = {}
+    keys = []
+    values = []
     while i < len(data['items']):
         cursor.execute('INSERT INTO users VALUES (NULL,%s, %s)', [emoji.demojize(data['items'][i]['name']), data['items'][i]['external_urls']['spotify']])
+        keys.append((data['items'][i]['name']))
+        values.append((data['items'][i]['external_urls']['spotify']))
         mysql.connection.commit()
         i+= 1
+    for i in range(len(keys)):
+        sozluk[keys[i]] = values[i]
+
     print('Success')
         
     
     if request.method == 'POST':
         return redirect(url_for('index'))
-    return render_template('results.html')
-
-
+    return render_template('results.html',data=sozluk)
 
 
 if __name__ == '__main__':

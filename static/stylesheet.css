@@ -1,6 +1,9 @@
 /* BLANK */
+html{
+    font-family: 'IM Fell DW Pica SC', serif;
+}
 .word{
-    color:white;
+    color:whitesmoke;
     text-align: center;
 }
 .form_container{
@@ -16,18 +19,51 @@ input.textbox{
 }
 a{
     width: 25vw;
-    height: 5vh;
     align-self: center;
+    text-decoration-line: none;
 }
 input.btn{
     width: 25vw;
     height: 5vh;
     border: black;
     border-radius: 1rem;
+    align-self: center;
+    font-size: 4ch;
     
+}
+input.btn:hover{
+    background-color: #fdcc52;
+    border-color: #fdcc52;
 }
 .test{
     display: flex;
     justify-content: center;
     flex-direction: column;
+}
+.result-table{
+    display: flex;
+    align-self: center;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.result-table a{
+    justify-self: center;
+    height: 185px;
+    position: relative;
+    text-align: center;
+    border-radius: 20px;
+    background-color: rgb(41, 65, 171);
+    color: white;
+    margin:0.5rem;
+
+}
+.result-table a:hover{
+    background-color: #fdcc52;
+    border-color: #fdcc52;
+}
+.result-table a p{
+    font-size: 4ch;
+    overflow-wrap: break-word;
+    white-space: break-spaces !important;
+    hyphens: auto;
 }
